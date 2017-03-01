@@ -1,0 +1,13 @@
+<div ng-app="app">
+<h1>Universities</h1>
+<div ng-controller="universitiesCtrl" ng-init="setup()">
+	<div ng-repeat="university in universities">
+	<h2 ng-click="tooglePrinciple">{{university.name}}</h2>
+	<div>
+		<p>Principal: {{university.principal_first_name}} {{university.pricinipal_last_name}}</p>
+	</div>
+	</div>
+</div>
+
+</div>
+

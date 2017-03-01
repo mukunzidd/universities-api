@@ -1,5 +1,5 @@
 class Api::V1::UniversitiesController < ApplicationController
-	before_action :find_university, only: [:show, :edit, :update, :destroy]
+before_action :find_university, only: [:show, :edit, :update, :destroy]
 
 def index
 	@universities = University.all
@@ -10,11 +10,11 @@ end
 
 def create
 	@university.create(university_params)
+	if @univesity.save
 		redirect_to @university
 	else
 		render 'new'
 	end
-
 end
 
 def edit
@@ -42,5 +42,4 @@ private
 	def find_university
 		@university = University.find(params[:id])
 	end
-
 end

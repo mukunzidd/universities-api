@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
 
+  get 'universities/index'
+
 	namespace :api do
 		namespace :v1 do
-			get '/universities', to: "universities#index"
-			get '/universities/:id', to: "universities#show"
-			post '/universities', to: "universities#create"
-			patch '/universities/:id', to: "universities#update"
-			delete '/universities', to: "universities#destroy"
-
+			resources :universities
 		end
 	end
-
+# Setting up the root of the app
+root 'universities#index'
 end
