@@ -1,13 +1,47 @@
 <div ng-app="app">
-<h1>Universities</h1>
-<div ng-controller="universitiesCtrl" ng-init="setup()">
-	<div ng-repeat="university in universities">
-	<h2 ng-click="tooglePrinciple">{{university.name}}</h2>
-	<div>
-		<p>Principal: {{university.principal_first_name}} {{university.pricinipal_last_name}}</p>
-	</div>
+	<div ng-controller="universitiesCtrl" ng-init="setUp()">
+
+		<!-- Add University -->
+		<div ng-model="addUniversity">
+			<h1>
+				<em>Add university:</em>
+			</h1>
+			University name: <input ng-model="name">
+			<br> <br>
+			Principal first name: <input ng-model="principalFirstName">
+			<br> <br>
+			Principal last name: <input ng-model="principalLastName">
+			<br>
+			<button ng-click="addUniversity(name, principalFirstName, principalLastName)">Create Me!</button>
+		</div>
+
+
+		<!-- All universities -->
+		<h1>All Universities</h1>
+		<div ng-repeat="university in universities">
+			<h2 ng-click="tooglePrincipal(university)">{{university.name}}</h2>
+			<p ng-if="university.principalVisible">Principal: {{university.principal_first_name}} {{university.pricinipal_last_name}}</p>
+
+			<!-- Toggle edit -->
+			<button ng-click="editUniversity(university)">Edit university</button>
+
+
+			<div ng-if="university.editMode">	
+				<h1>
+					<em>Editing {{university.name}}:</em>
+				</h1>
+				New University name: <input ng-model="name">
+				<br> <br>
+					New Principal first name: <input ng-model="principalFirstName">
+				<br> <br>
+					New Principal last name: <input ng-model="principalLastName">
+				<br>
+				<button ng-click="updateUniversity(university, $index, name, principalFirstName, principalLastName)">Update Me!</button>
+			</div>
+		</div>
 	</div>
 </div>
 
-</div>
 
+
+</div>

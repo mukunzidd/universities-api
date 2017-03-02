@@ -2,7 +2,7 @@ class Api::V1::UniversitiesController < ApplicationController
 before_action :find_university, only: [:show, :edit, :update, :destroy]
 
 def index
-	@universities = University.all
+	@universities = University.all.order("created_at DESC")
 end
 
 def show
